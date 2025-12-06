@@ -1,0 +1,19 @@
+:root {
+  --bg: #f5f7fb;
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+  padding: 24px;
+}
