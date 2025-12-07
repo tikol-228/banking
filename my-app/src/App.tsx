@@ -10,6 +10,11 @@ import Loans from './layouts/Loans'
 import Services from './layouts/Services'
 import Privileges from './layouts/MyPrivileges'
 import Setting from './layouts/Setting'
+import Preferences from './components/Preferences'
+import Security from './components/Security'
+import EditProfile from './components/EditProfile'
+import Auth from './layouts/Auth'
+import { AuthProvider } from './contexts/authContext'
 
 
 
@@ -17,9 +22,10 @@ function App() {
 
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<MainLayout />}> 
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Auth />}> 
           <Route index element={<Navigate to='/dashboard' replace />} />
           <Route path='dashboard' element={<Dashboard />} />
           <Route path='transactions' element={<Transactions />} />
@@ -29,10 +35,15 @@ function App() {
           <Route path='loans' element={<Loans />} />
           <Route path='services' element={<Services />} />
           <Route path='privileges' element={<Privileges />} />
-          <Route path='setting' element={<Setting />} />
+          <Route path="setting" element={<Setting />}>
+            <Route index element={<EditProfile />} />
+            <Route path="preferences" element={<Preferences />} />
+            <Route path="security" element={<Security />} />
+          </Route>
         </Route>
       </Routes>
-    </BrowserRouter>
+      </BrowserRouter>
+    </AuthProvider>
   )
 }
 

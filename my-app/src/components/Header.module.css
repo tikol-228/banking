@@ -3,10 +3,9 @@
   align-items: center;
   justify-content: space-between;
   background: #fff;
-  height: 100px;
+  height: 75px;
   padding: 0 32px;
   border-bottom: 1px solid #e5e7eb;
-  width: 100%;
 }
 
 .left {
