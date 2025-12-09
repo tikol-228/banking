@@ -25,23 +25,27 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Auth />}> 
-          <Route index element={<Navigate to='/dashboard' replace />} />
-          <Route path='dashboard' element={<Dashboard />} />
-          <Route path='transactions' element={<Transactions />} />
-          <Route path='accounts' element={<Accounts />} />
-          <Route path='investments' element={<Investments />} />
-          <Route path='credit-cards' element={<CreditCards />} />
-          <Route path='loans' element={<Loans />} />
-          <Route path='services' element={<Services />} />
-          <Route path='privileges' element={<Privileges />} />
-          <Route path="setting" element={<Setting />}>
-            <Route index element={<EditProfile />} />
-            <Route path="preferences" element={<Preferences />} />
-            <Route path="security" element={<Security />} />
+          {/* Auth routes (login / register) */}
+          <Route path="/auth" element={<Auth />} />
+
+          {/* Main application routes (protected by Auth component/state) */}
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<Navigate to="dashboard" replace />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="transactions" element={<Transactions />} />
+            <Route path="accounts" element={<Accounts />} />
+            <Route path="investments" element={<Investments />} />
+            <Route path="credit-cards" element={<CreditCards />} />
+            <Route path="loans" element={<Loans />} />
+            <Route path="services" element={<Services />} />
+            <Route path="privileges" element={<Privileges />} />
+            <Route path="setting" element={<Setting />}>
+              <Route index element={<EditProfile />} />
+              <Route path="preferences" element={<Preferences />} />
+              <Route path="security" element={<Security />} />
+            </Route>
           </Route>
-        </Route>
-      </Routes>
+        </Routes>
       </BrowserRouter>
     </AuthProvider>
   )
